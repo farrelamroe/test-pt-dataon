@@ -8,7 +8,7 @@ const Login: NextPage = () => {
   const router = useRouter();
 
   const handleLogin = () => {
-    if (username && password) {
+    if (username == "testing123" && password == "123456") {
       localStorage.setItem("isLoggedIn", "true");
       router.push("/");
     }
