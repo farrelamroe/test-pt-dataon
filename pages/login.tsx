@@ -9,9 +9,11 @@ const Login: NextPage = () => {
 
   const handleLogin = () => {
     if (username && password) {
+      localStorage.setItem("isLoggedIn", "true");
       router.push("/");
     }
   };
+  
 
   return (
     <div className="flex items-center justify-center h-screen bg-[#4286D7] p-4">

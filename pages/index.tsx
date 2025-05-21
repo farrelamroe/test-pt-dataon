@@ -2,6 +2,7 @@
 import { useRouter } from "next/router";
 import type { NextPage } from "next";
 import Image from "next/image";
+import { useEffect } from "react";
 
 const posts = [
   {
@@ -31,11 +32,22 @@ const posts = [
 ];
 
 const Dashboard: NextPage = () => {
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const loggedIn = localStorage.getItem("isLoggedIn");
+      if (loggedIn !== "true") {
+        router.push("/login");
+      }
+    }
+  }, []);
+  
   const router = useRouter();
 
   const handleLogout = () => {
+    localStorage.removeItem("isLoggedIn");
     router.push("/login");
   };
+  
 
   return (
     <div className="min-h-screen bg-[#2A2E33] text-white p-4 pb-24">
